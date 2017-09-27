@@ -30,7 +30,7 @@ const instrument = new Instrument({
 })
 
 // Extra cfg needed for pg instrumentation
-const instrumentation = require('@risingstack/opentracing-auto/src/instrumentation/pg')
+// const instrumentation = require('@risingstack/opentracing-auto/src/instrumentation/pg')
 ////////////////////// END Jaeger Stuff /////////////////////////
 
 // THESE GET AUTO INSTRUMENTED THANKS TO THE FIRST LINE
@@ -40,12 +40,13 @@ const http = require('http')
 // const massive = require('massive')
 const knex = require('knex')
 
-const pg = require('pg')
-instrumentation.patch(pg, tracers)
+// const pg = require('pg')
+// instrumentation.patch(pg, tracers)
 
 const db = knex({
   client: 'pg',
   connection: 'postgres://postgres:@localhost:5432/postgres'
+  // connection: 'postgres://postgres:@postgres:5432/postgres'
 })
 
 var app = express();
@@ -68,32 +69,3 @@ http.createServer(app).listen(8082, function() {
   console.log('Listening on port 8082')
 })
 
-
-// massive({
-//   // host: 'postgres',
-//   host: 'localhost',
-//   port: 5432,
-//   database: 'postgres',
-//   user: 'postgres',
-//   password: ''
-// }).then(instance => {
-//   app.set('db', instance);
-//
-//   app.get('/pgdata', function(req, res, next) {
-//     app.get('db').run('select ' + count + ' as dummy')
-//       .then(rs => {
-//         res.send(rs)
-//         count++
-//       })
-//   })
-//
-//   // Metrics endpoint, typically for scraping with Prometheus or equivalent
-//   app.get('/metrics', (req, res) => {
-//     res.set('Content-Type', MetricsTracer.PrometheusReporter.Prometheus.register.contentType)
-//     res.end(prometheusReporter.metrics())
-//   })
-//
-//   http.createServer(app).listen(8082, function() {
-//     console.log('Listening on port 8082')
-//   })
-// })

@@ -1,13 +1,11 @@
 {
   "dependencies": {
-    "@risingstack/jaeger": "^2.5.0",
     "@risingstack/opentracing-auto": "^1.4.3",
     "@risingstack/opentracing-metrics-tracer": "^2.0.1",
-    "express": "^4.15.5",
-    "jaeger-client": "^3.5.3",
-    "knex": "^0.13.0",
-    "massive": "^4.2.0",
     "opentracing": "^0.14.1",
+    "jaeger-client": "^3.5.3",
+    "express": "^4.15.5",
+    "knex": "^0.13.0",
     "pg": "^6.4.0"
   }
 }
