@@ -28,20 +28,13 @@ const tracers = [metricsTracer, jaegerTracer]
 const instrument = new Instrument({
   tracers: tracers
 })
-
-// Extra cfg needed for pg instrumentation
-// const instrumentation = require('@risingstack/opentracing-auto/src/instrumentation/pg')
 ////////////////////// END Jaeger Stuff /////////////////////////
 
 // THESE GET AUTO INSTRUMENTED THANKS TO THE FIRST LINE
-
 const express = require("express")
 const http = require('http')
 // const massive = require('massive')
 const knex = require('knex')
-
-// const pg = require('pg')
-// instrumentation.patch(pg, tracers)
 
 const db = knex({
   client: 'pg',
